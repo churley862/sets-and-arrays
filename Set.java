@@ -17,6 +17,10 @@ public class Set
      int [] setArray = new int[] {};//this works but is explicitly against
                                     //his rules and makes me sad
    }
+   public Set(int [] inputArray)
+   {
+      this.setArray = inputArray;
+   }
 	public void makeEmpty()
    {
       setArray = new int[]{};
@@ -81,11 +85,22 @@ public class Set
       int [] tempArray = new int []{};
       for (int index = 0; index <= input.setArray.length; index++)
       {
+         add(setArray[index],tempArray);
+         add(input.setArray[index],tempArray);
+      }
+      Set output = new Set(tempArray);
+      return output;
+   }
+   public Set intersection(Set input)
+   {
+      int [] tempArray = new int []{};
+      for (int index = 0; index <= input.setArray.length; index++)
+      {
          if(input.elementOf(setArray[index]))
             add(setArray[index],tempArray);
       }
-      input.setArray = tempArray;
-      return input;
+      Set output = new Set(tempArray);
+      return output;
    }
 }  
 
