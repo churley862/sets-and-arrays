@@ -102,5 +102,43 @@ public class Set
       Set output = new Set(tempArray);
       return output;
    }
+   public Set setDifference(Set input)
+   {
+      int [] tempArray = new int []{};
+      for (int index = 0; index <= input.setArray.length; index++)
+      {
+         boolean notSame = true;
+         for (int counter = 0; counter <= setArray.length; counter++)
+         {
+            if (input.setArray[index] == setArray[counter])
+            {
+               notSame = false;
+            }
+            
+         }
+         if(notSame)
+         {
+             add(input.setArray[index],tempArray);
+         }
+      }
+      for (int index = 0; index <= input.setArray.length; index++)
+      {
+         boolean notSame = true;
+         for (int counter = 0; counter <= setArray.length; counter++)
+         {
+            if (setArray[index] == input.setArray[counter])
+            {
+               notSame = false;
+            }
+            
+         }
+         if(notSame)
+         {
+             add(setArray[index],tempArray);
+         }
+      }
+      Set output = new Set(tempArray);
+      return output;
+   }
 }  
 
