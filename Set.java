@@ -140,5 +140,16 @@ public class Set
       Set output = new Set(tempArray);
       return output;
    }
+   public String toString()
+   {
+      String output;
+      output = "{ " + setArray[0];
+      for (int index = 1; index <= setArray.length; index++)
+      {
+         output += ", " + setArray[index];
+      }
+      output += " }";
+      return output;
+   }
 }  
 
