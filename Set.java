@@ -14,7 +14,7 @@ public class Set
     private int[] setArray = {};
     public Set()
     {
-        setArray = new int[0];        //this works but is explicitly against his rules and makes me sad
+        setArray = new int[0];
     }
 
     public Set(int[] inputArray)
