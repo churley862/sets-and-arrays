@@ -18,7 +18,7 @@ public class Driver
  */   
       
       public static int setIndex,setIndex2,setIndex3;
-      public static void main(String [] args)
+      public static void main(String [] args) throws Exception
    {
       Set [] sets = new Set[100];
       int value;
@@ -92,7 +92,7 @@ public class Driver
                sets[setIndex].add(value);
             }
         case '#':
-            System.out.println(inputFile.next());
+            System.out.println(inputFile.nextLine());
       }
    }//main
    }
