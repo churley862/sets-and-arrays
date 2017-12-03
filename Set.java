@@ -69,7 +69,7 @@ public class Set
 
     public boolean elementOf(int number)
     {
-        for (int i =0; i <= setArray.length; i++)
+        for (int i = 0; i < setArray.length; i++)
         {
             if (setArray[i] == number)
                 return true;
