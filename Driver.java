@@ -17,6 +17,8 @@ public class Driver
     put data table for main here
     */
 
+    static PrintStream out;
+
     public static int setIndex,setIndex2,setIndex3;
     public static void main(String [] args) throws Exception
     {
@@ -26,6 +28,7 @@ public class Driver
         File outFile = new File(args[1]);
         Scanner inputFile = new Scanner(inFile);
         FileOutputStream outputFile = new FileOutputStream(outFile);
+        out = new PrintStream(outputFile);
         while (inputFile.hasNext())
         {
             char command = (inputFile.next()).charAt(0);
@@ -35,7 +38,7 @@ public class Driver
             case 'C':
                 setIndex = inputFile.nextInt();
                 sets[setIndex] = new Set();
-                System.out.println("Set " + setIndex + " has been constructed.");
+                out.println("Set " + setIndex + " has been constructed.");
                 break;
             case 'I':
                 setIndex = inputFile.nextInt();
@@ -53,17 +56,17 @@ public class Driver
                 setIndex = inputFile.nextInt();
                 value = inputFile.nextInt();
                 if (sets[setIndex] == null) {
-                    System.out.println("Set " + setIndex + " does not exist.");
+                    out.println("Set " + setIndex + " does not exist.");
                 } else {
                     sets[setIndex].add(value);
-                    System.out.println("Set " + setIndex + " had the value " + value + " added to it");
+                    out.println("Set " + setIndex + " had the value " + value + " added to it");
                 }
                 break;
             case 'R' :
                 setIndex = inputFile.nextInt();
                 value = inputFile.nextInt();
                 if (sets[setIndex] == null) {
-                    System.out.println("Set " + setIndex + " does not exist.");
+                    out.println("Set " + setIndex + " does not exist.");
                 } else {
                     sets[setIndex].remove(value);
                 }
@@ -72,7 +75,7 @@ public class Driver
                 setIndex = inputFile.nextInt();
                 value = inputFile.nextInt();
                 if (sets[setIndex] == null) {
-                    System.out.println("Set " + setIndex + " does not exist.");
+                    out.println("Set " + setIndex + " does not exist.");
                 } else {
                     fCase(sets,setIndex,value);
                 }
@@ -99,7 +102,7 @@ public class Driver
                 break;
             case 'P':
                 setIndex = inputFile.nextInt();
-                System.out.println(sets[setIndex].toString());
+                out.println(sets[setIndex].toString());
             case 'M':
                 setIndex = inputFile.nextInt();
                 while (inputFile.hasNextInt())
@@ -108,14 +111,14 @@ public class Driver
                     sets[setIndex].add(value);
                 }
             case '#':
-                System.out.println(inputFile.nextLine());
+                out.println(inputFile.nextLine());
             }
         }//main
     }
     public static void iCase(Set [] setArray, int setIndex)throws Exception
     {
        if (setArray[setIndex] == null) {
-                    System.out.println("Set " + setIndex + " does not exist.");
+                    out.println("Set " + setIndex + " does not exist.");
                 } else {
                              String output;
                           if(setArray[setIndex].isEmpty())
@@ -126,7 +129,7 @@ public class Driver
                            {
                               output = "Set " + setIndex + "is not empty";
                            }
-                           System.out.println(output);
+                           out.println(output);
         
        
                        }
@@ -136,10 +139,10 @@ public class Driver
     public static void sCase(Set [] setArray, int setIndex)
     {
         if (setArray[setIndex] == null) {
-                    System.out.println("Set " + setIndex + " does not exist.");
+                    out.println("Set " + setIndex + " does not exist.");
                 } else {
                            int size = setArray[setIndex].size();
-                           System.out.println("Set " + setIndex + "has a size of " + size);
+                           out.println("Set " + setIndex + "has a size of " + size);
                        }
     }
     public static void fCase(Set [] setArray, int setIndex, int value)
@@ -160,7 +163,7 @@ public class Driver
         {
             output = "Set " + setIndex + "is empty";
         }
-        System.out.println(output);
+        out.println(output);
     }
 
     /*
