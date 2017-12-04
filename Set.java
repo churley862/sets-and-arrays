@@ -99,7 +99,7 @@ public class Set
     public Set intersection(Set input)
     {
         Set result = new Set();
-        for (int index = 0; index < input.setArray.length; index++)
+        for (int index = 0; index < setArray.length; index++)
         {
             if(input.elementOf(setArray[index]))
                 result.add(setArray[index]);
