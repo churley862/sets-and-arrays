@@ -60,11 +60,21 @@ public class Driver
             case 'R' :
                 setIndex = inputFile.nextInt();
                 value = inputFile.nextInt();
-                sets[setIndex].remove(value);
+                if (sets[setIndex] == null) {
+                    System.out.println("Set " + setIndex + " does not exist.");
+                } else {
+                    sets[setIndex].remove(value);
+                }
                 break;
             case 'F' :
                 setIndex = inputFile.nextInt();
                 value = inputFile.nextInt();
+                if (sets[setIndex] == null) {
+                    System.out.println("Set " + setIndex + " does not exist.");
+                } else {
+                    f(sets,setIndex,value);
+                }
+
                 f(sets,setIndex,value);
                 break;
             case 'U':
@@ -100,7 +110,7 @@ public class Driver
             }
         }//main
     }
-    public static void i(Set [] setArray, int setIndex)
+    public static void i(Set [] setArray, int setIndex)throws Exception
     {
         String output;
         if(setArray[setIndex].isEmpty())
@@ -112,6 +122,7 @@ public class Driver
             output = "Set " + setIndex + "is not empty";
         }
         System.out.println(output);
+        
     }
 
     public static void s(Set [] setArray, int setIndex)
