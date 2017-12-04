@@ -1,0 +1,51 @@
+ this is a test
+Set 50 has been constructed.
+Set 9 has been constructed.
+Set 9 had the value 234 added to it
+{ 234 }
+Set 9 had the value 862 added to it
+{ 234, 862 }
+Set 9 has a size of 2
+Set 9 was emptied.
+Set 9 had the value 254 added to it
+Set 9 had the value 33 added to it
+{ 254, 33 }
+Set 9 has value 33
+ Mark 1
+Removing 33 from set 9
+Set 9 does not have value 33
+{ 254 }
+Removing 33 from set 9
+Set 9 does not have value 33
+{ 254 }
+Set 1 does not exist.
+Set 9 has value 254
+Set 9 does not have value 33
+Set 50 had the value 862 added to it
+Set 11 has been constructed.
+ Set 9
+{ 254 }
+ Set 50
+{ 862 }
+ Show the union 
+{ 254, 862 }
+Set 11 had the value 33 added to it
+{ 254, 862, 33 }
+Set 7 has been constructed.
+Set 7 had the value 33 added to it
+Set 7 had the value 67 added to it
+{ 254, 862, 33 }
+{ 33, 67 }
+ Show the difference
+{ 254, 862 }
+ Show the intersection
+{ 33 }
+Set 10 does not exist.
+Set 10 has been constructed.
+Set 10 had the value 123 added to it
+Set 8 has been constructed.
+Removing 522 from set 8
+Set 17 has been constructed.
+Set 17 has a size of 0
+ Make a team
+{ 33, 67, 862 }

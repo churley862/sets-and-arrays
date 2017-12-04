@@ -2,7 +2,55 @@
 C 50
 C 9
 A 9 234
-A 10 123
-R 8 522
+P 9
+A 9 862
+P 9
+S 9
+X 9
+A 9 254
+A 9 33
+P 9
+F 9 33
+# Mark 1
+R 9 33
+F 9 33
+P 9
+R 9 33
+F 9 33
+P 9
+F 1 33
+F 9 254
+F 9 33
+A 50 862
+C 11
+U 9 50 11
+# Set 9
+P 9
+# Set 50
+P 50
+# Show the union 
+P 11
+A 11 33
+P 11
+C 7
+A 7 33
+A 7 67
+P 11
+P 7
+D 11 7 8
+# Show the difference
+P 8
+N 11 7 42
+# Show the intersection
+P 42
 I 10
+C 10
+A 10 123
+C 8
+R 8 522
+C 17
 S 17
+# Make a team
+M 70 33 67 862
+P 70
+
