@@ -32,53 +32,29 @@ public class Driver
 
             //String output;
             switch (command) {
-            case 'C':
-                constructSet();
-                break;
+            case 'C': constructSet(); break;
 
-            case 'I':
-                inspectSet();
-                break;
+            case 'I': inspectSet(); break;
 
-            case 'S':
-                countSetElements();
-                break;
+            case 'S': countSetElements(); break;
 
-            case 'X' :
-                emptySet();
-                break;
+            case 'X' : emptySet(); break;
 
-            case 'A' :
-                addElementToSet();
-                break;
+            case 'A' : addElementToSet(); break;
 
-            case 'R' :
-                removeElementFromSet();
-                break;
+            case 'R' : removeElementFromSet(); break;
 
-            case 'F' :
-                findElementInSet();
-                break;
+            case 'F' : findElementInSet(); break;
 
-            case 'U':
-                unionOfSets();
-                break;
+            case 'U': unionOfSets(); break;
 
-            case 'N':
-                intersectionOfSets();
-                break;
+            case 'N': intersectionOfSets(); break;
 
-            case 'D':
-                differenceOfSets();
-                break;
+            case 'D': differenceOfSets(); break;
 
-            case 'P':
-                printSet();
-                break;
+            case 'P': printSet(); break;
 
-            case 'M':
-                buildSet();
-                break;
+            case 'M': buildSet(); break;
 
             case '#':
                 System.out.println(inputFile.nextLine());
