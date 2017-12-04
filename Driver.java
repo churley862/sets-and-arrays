@@ -39,18 +39,27 @@ public class Driver
                 sets[setIndex] = new Set();
                 System.out.println("Set " + setIndex + " has been constructed.");
                 break;
+
             case 'I':
                 setIndex = inputFile.nextInt();
                 iCase(sets,setIndex);
                 break;
+
             case 'S':
                 setIndex = inputFile.nextInt();
                 sCase(sets,setIndex);
                 break;
+
             case 'X' :
-                setIndex = inputFile.nextInt();
-                sets[setIndex].makeEmpty();
+                if (sets[setIndex] != null) {
+                  setIndex = inputFile.nextInt();
+                  sets[setIndex].makeEmpty();
+                  System.out.println("Set " + setIndex + " was emptied.");
+                } else {
+                  System.out.println("Set " + setIndex + " does not exist.");
+                }
                 break;
+                
             case 'A' :
                 setIndex = inputFile.nextInt();
                 value = inputFile.nextInt();
@@ -61,15 +70,18 @@ public class Driver
                     System.out.println("Set " + setIndex + " had the value " + value + " added to it");
                 }
                 break;
+
             case 'R' :
                 setIndex = inputFile.nextInt();
                 value = inputFile.nextInt();
                 if (sets[setIndex] == null) {
                     System.out.println("Set " + setIndex + " does not exist.");
                 } else {
+                    System.out.println("Removing " + value + " from set " + setIndex);
                     sets[setIndex].remove(value);
                 }
                 break;
+                
             case 'F' :
                 setIndex = inputFile.nextInt();
                 value = inputFile.nextInt();
@@ -79,29 +91,34 @@ public class Driver
                     fCase(sets,setIndex,value);
                 }
 
-                fCase(sets,setIndex,value);
                 break;
+
             case 'U':
                 setIndex = inputFile.nextInt();
                 setIndex2 = inputFile.nextInt();
                 setIndex3 = inputFile.nextInt();
                 sets[setIndex3] = sets[setIndex].union(sets[setIndex2]);
                 break;
+                
             case 'N':
                 setIndex = inputFile.nextInt();
                 setIndex2 = inputFile.nextInt();
                 setIndex3 = inputFile.nextInt();
                 sets[setIndex3] = sets[setIndex].intersection(sets[setIndex2]);
                 break;
+
             case 'D':
                 setIndex = inputFile.nextInt();
                 setIndex2 = inputFile.nextInt();
                 setIndex3 = inputFile.nextInt();
                 sets[setIndex3] = sets[setIndex].setDifference(sets[setIndex2]);
                 break;
+
             case 'P':
                 setIndex = inputFile.nextInt();
                 System.out.println(sets[setIndex].toString());
+                break;
+
             case 'M':
                 setIndex = inputFile.nextInt();
                 while (inputFile.hasNextInt())
@@ -109,6 +126,8 @@ public class Driver
                     value = inputFile.nextInt();
                     sets[setIndex].add(value);
                 }
+                break;
+
             case '#':
                 System.out.println(inputFile.nextLine());
             }
@@ -147,7 +166,7 @@ public class Driver
     public static void fCase(Set [] setArray, int setIndex, int value)
     {
         String output;
-        if (!setArray[setIndex].isEmpty())
+        if (setArray[setIndex] != null)
         {
             if(setArray[setIndex].elementOf(value))
             {
@@ -160,7 +179,7 @@ public class Driver
         }
         else
         {
-            output = "Set " + setIndex + " is empty";
+            output = "There is no set " + setIndex + " in which to find a value.";
         }
         System.out.println(output);
     }

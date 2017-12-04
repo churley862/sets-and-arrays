@@ -63,7 +63,7 @@ public class Set
             int aindex = 0;
             for (int index = 0; index < setArray.length; index++) {
                 if (setArray[index] != value) {
-                    a[aindex++] = value;
+                    a[aindex++] = setArray[index];
                 }
             }
             setArray = a;
@@ -88,17 +88,18 @@ public class Set
     public Set union(Set input)
     {
         Set result = new Set(this);
-        for (int index = 0; index <= input.setArray.length; index++)
+        for (int index = 0; index < input.setArray.length; index++)
         {
-            add(input.setArray[index]);
+            result.add(input.setArray[index]);
         }
+
         return result;
     }
 
     public Set intersection(Set input)
     {
         Set result = new Set();
-        for (int index = 0; index <= input.setArray.length; index++)
+        for (int index = 0; index < input.setArray.length; index++)
         {
             if(input.elementOf(setArray[index]))
                 result.add(setArray[index]);
@@ -110,7 +111,7 @@ public class Set
     {
         int [] tempArray = new int [] {};
         Set result = new Set();
-        for (int index = 0; index <= input.setArray.length; index++)
+        for (int index = 0; index < input.setArray.length; index++)
         {
             if(!input.elementOf(setArray[index]))
                 result.add(setArray[index]);
@@ -121,10 +122,13 @@ public class Set
     public String toString()
     {
         String output;
-        output = "{ " + setArray[0];
-        for (int index = 1; index <= setArray.length; index++)
+        output = "{ ";
+        for (int index = 0; index < setArray.length; index++)
         {
-            output += ", " + setArray[index];
+            if (index != 0) {
+              output += ", ";
+            }
+            output += setArray[index];
         }
         output += " }";
         return output;
