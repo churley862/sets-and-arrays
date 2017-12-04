@@ -122,11 +122,11 @@ public class Driver
                              String output;
                           if(setArray[setIndex].isEmpty())
                            {
-                              output = "Set " + setIndex + "is empty";
+                              output = "Set " + setIndex + " is empty";
                            }
                            else
                            {
-                              output = "Set " + setIndex + "is not empty";
+                              output = "Set " + setIndex + " is not empty";
                            }
                            System.out.println(output);
         
@@ -141,7 +141,7 @@ public class Driver
                     System.out.println("Set " + setIndex + " does not exist.");
                 } else {
                            int size = setArray[setIndex].size();
-                           System.out.println("Set " + setIndex + "has a size of " + size);
+                           System.out.println("Set " + setIndex + " has a size of " + size);
                        }
     }
     public static void fCase(Set [] setArray, int setIndex, int value)
@@ -151,16 +151,16 @@ public class Driver
         {
             if(setArray[setIndex].elementOf(value))
             {
-                output = "Set " + setIndex + "has value " + value;
+                output = "Set " + setIndex + " has value " + value;
             }
             else
             {
-                output = "Set " + setIndex + "does not have value " + value;
+                output = "Set " + setIndex + " does not have value " + value;
             }
         }
         else
         {
-            output = "Set " + setIndex + "is empty";
+            output = "Set " + setIndex + " is empty";
         }
         System.out.println(output);
     }
