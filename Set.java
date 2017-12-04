@@ -50,7 +50,10 @@ public class Set
             }
             a[setArray.length] = value;
             setArray = a;
-        }
+            
+        }else
+        System.out.println("There is no set to add the value to");
+        
     }
 
     public void remove(int value)

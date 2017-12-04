@@ -38,11 +38,11 @@ public class Driver
                 break;
             case 'I':
                 setIndex = inputFile.nextInt();
-                i(sets,setIndex);
+                iCase(sets,setIndex);
                 break;
             case 'S':
                 setIndex = inputFile.nextInt();
-                s(sets,setIndex);
+                sCase(sets,setIndex);
                 break;
             case 'X' :
                 setIndex = inputFile.nextInt();
@@ -55,6 +55,7 @@ public class Driver
                     System.out.println("Set " + setIndex + " does not exist.");
                 } else {
                     sets[setIndex].add(value);
+                    System.out.println("Set " + setIndex + " had the value " + value + " added to it");
                 }
                 break;
             case 'R' :
@@ -72,10 +73,10 @@ public class Driver
                 if (sets[setIndex] == null) {
                     System.out.println("Set " + setIndex + " does not exist.");
                 } else {
-                    f(sets,setIndex,value);
+                    fCase(sets,setIndex,value);
                 }
 
-                f(sets,setIndex,value);
+                fCase(sets,setIndex,value);
                 break;
             case 'U':
                 setIndex = inputFile.nextInt();
@@ -110,27 +111,37 @@ public class Driver
             }
         }//main
     }
-    public static void i(Set [] setArray, int setIndex)throws Exception
+    public static void iCase(Set [] setArray, int setIndex)throws Exception
     {
-        String output;
-        if(setArray[setIndex].isEmpty())
-        {
-            output = "Set " + setIndex + "is empty";
-        }
-        else
-        {
-            output = "Set " + setIndex + "is not empty";
-        }
-        System.out.println(output);
+       if (setArray[setIndex] == null) {
+                    System.out.println("Set " + setIndex + " does not exist.");
+                } else {
+                             String output;
+                          if(setArray[setIndex].isEmpty())
+                           {
+                              output = "Set " + setIndex + "is empty";
+                           }
+                           else
+                           {
+                              output = "Set " + setIndex + "is not empty";
+                           }
+                           System.out.println(output);
         
-    }
+       
+                       }
 
-    public static void s(Set [] setArray, int setIndex)
+            }
+
+    public static void sCase(Set [] setArray, int setIndex)
     {
-        int size = setArray[setIndex].size();
-        System.out.println("Set " + setIndex + "has a size of " + size);
+        if (setArray[setIndex] == null) {
+                    System.out.println("Set " + setIndex + " does not exist.");
+                } else {
+                           int size = setArray[setIndex].size();
+                           System.out.println("Set " + setIndex + "has a size of " + size);
+                       }
     }
-    public static void f(Set [] setArray, int setIndex, int value)
+    public static void fCase(Set [] setArray, int setIndex, int value)
     {
         String output;
         if (!setArray[setIndex].isEmpty())
