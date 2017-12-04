@@ -17,16 +17,14 @@ public class Driver
     put data table for main here
     */
 
-    public static int setIndex,setIndex2,setIndex3;
+    // All of the command methods use this, might as well
+    // make them easier to access, rather than pass them every time
+    private static Set[] sets = new Set[100];
+    private static Scanner inputFile;
+
     public static void main(String [] args) throws Exception
     {
-        Set [] sets = new Set[100];
-        int value;
-        File inFile = new File(args[0]);
-        File outFile = new File(args[1]);
-        Scanner inputFile = new Scanner(inFile);
-        FileOutputStream outputFile = new FileOutputStream(outFile);
-        System.setOut(new PrintStream(outputFile));
+        initialize(args);
 
         while (inputFile.hasNext())
         {
@@ -35,141 +33,184 @@ public class Driver
             //String output;
             switch (command) {
             case 'C':
-                setIndex = inputFile.nextInt();
-                sets[setIndex] = new Set();
-                System.out.println("Set " + setIndex + " has been constructed.");
+                constructSet();
                 break;
 
             case 'I':
-                setIndex = inputFile.nextInt();
-                iCase(sets,setIndex);
+                inspectSet();
                 break;
 
             case 'S':
-                setIndex = inputFile.nextInt();
-                sCase(sets,setIndex);
+                countSetElements();
                 break;
 
             case 'X' :
-                if (sets[setIndex] != null) {
-                  setIndex = inputFile.nextInt();
-                  sets[setIndex].makeEmpty();
-                  System.out.println("Set " + setIndex + " was emptied.");
-                } else {
-                  System.out.println("Set " + setIndex + " does not exist.");
-                }
+                emptySet();
                 break;
-                
+
             case 'A' :
-                setIndex = inputFile.nextInt();
-                value = inputFile.nextInt();
-                if (sets[setIndex] == null) {
-                    System.out.println("Set " + setIndex + " does not exist.");
-                } else {
-                    sets[setIndex].add(value);
-                    System.out.println("Set " + setIndex + " had the value " + value + " added to it");
-                }
+                addElementToSet();
                 break;
 
             case 'R' :
-                setIndex = inputFile.nextInt();
-                value = inputFile.nextInt();
-                if (sets[setIndex] == null) {
-                    System.out.println("Set " + setIndex + " does not exist.");
-                } else {
-                    System.out.println("Removing " + value + " from set " + setIndex);
-                    sets[setIndex].remove(value);
-                }
+                removeElementFromSet();
                 break;
-                
-            case 'F' :
-                setIndex = inputFile.nextInt();
-                value = inputFile.nextInt();
-                if (sets[setIndex] == null) {
-                    System.out.println("Set " + setIndex + " does not exist.");
-                } else {
-                    fCase(sets,setIndex,value);
-                }
 
+            case 'F' :
+                findElementInSet();
                 break;
 
             case 'U':
-                setIndex = inputFile.nextInt();
-                setIndex2 = inputFile.nextInt();
-                setIndex3 = inputFile.nextInt();
-                sets[setIndex3] = sets[setIndex].union(sets[setIndex2]);
+                unionOfSets();
                 break;
-                
+
             case 'N':
-                setIndex = inputFile.nextInt();
-                setIndex2 = inputFile.nextInt();
-                setIndex3 = inputFile.nextInt();
-                sets[setIndex3] = sets[setIndex].intersection(sets[setIndex2]);
+                intersectionOfSets();
                 break;
 
             case 'D':
-                setIndex = inputFile.nextInt();
-                setIndex2 = inputFile.nextInt();
-                setIndex3 = inputFile.nextInt();
-                sets[setIndex3] = sets[setIndex].setDifference(sets[setIndex2]);
+                differenceOfSets();
                 break;
 
             case 'P':
-                setIndex = inputFile.nextInt();
-                System.out.println(sets[setIndex].toString());
+                printSet();
                 break;
 
             case 'M':
-                setIndex = inputFile.nextInt();
-                sets[setIndex] = new Set();
-                while (inputFile.hasNextInt())
-                {
-                    value = inputFile.nextInt();
-                    sets[setIndex].add(value);
-                }
+                buildSet();
                 break;
 
             case '#':
                 System.out.println(inputFile.nextLine());
             }
-        }//main
-    }
-    public static void iCase(Set [] setArray, int setIndex)throws Exception
-    {
-       if (setArray[setIndex] == null) {
-                    System.out.println("Set " + setIndex + " does not exist.");
-                } else {
-                             String output;
-                          if(setArray[setIndex].isEmpty())
-                           {
-                              output = "Set " + setIndex + " is empty";
-                           }
-                           else
-                           {
-                              output = "Set " + setIndex + " is not empty";
-                           }
-                           System.out.println(output);
-        
-       
-                       }
+        }
+    }  // main
 
-            }
-
-    public static void sCase(Set [] setArray, int setIndex)
-    {
-        if (setArray[setIndex] == null) {
-                    System.out.println("Set " + setIndex + " does not exist.");
-                } else {
-                           int size = setArray[setIndex].size();
-                           System.out.println("Set " + setIndex + " has a size of " + size);
-                       }
+    private static void initialize(String[] args) throws FileNotFoundException {
+        File inFile = new File(args[0]);
+        File outFile = new File(args[1]);
+        inputFile = new Scanner(inFile);
+        FileOutputStream outputFile = new FileOutputStream(outFile);
+        System.setOut(new PrintStream(outputFile));
     }
-    public static void fCase(Set [] setArray, int setIndex, int value)
-    {
-        String output;
-        if (setArray[setIndex] != null)
+
+    private static void buildSet() {
+        int setIndex = inputFile.nextInt();
+        sets[setIndex] = new Set();
+        while (inputFile.hasNextInt())
         {
-            if(setArray[setIndex].elementOf(value))
+            int value = inputFile.nextInt();
+            sets[setIndex].add(value);
+        }
+    }
+
+    private static void printSet() {
+        int setIndex = inputFile.nextInt();
+        if (sets[setIndex] == null) {
+            System.out.println("The set " + setIndex + " does not exist.");
+        } else {
+            System.out.println(sets[setIndex].toString());
+        }
+    }
+
+    private static void differenceOfSets() {
+        int setIndex = inputFile.nextInt();
+        int setIndex2 = inputFile.nextInt();
+        int setIndex3 = inputFile.nextInt();
+        sets[setIndex3] = sets[setIndex].setDifference(sets[setIndex2]);
+    }
+
+    private static void intersectionOfSets() {
+        int setIndex = inputFile.nextInt();
+        int setIndex2 = inputFile.nextInt();
+        int setIndex3 = inputFile.nextInt();
+        sets[setIndex3] = sets[setIndex].intersection(sets[setIndex2]);
+    }
+
+    private static void unionOfSets() {
+        int setIndex = inputFile.nextInt();
+        int setIndex2 = inputFile.nextInt();
+        int setIndex3 = inputFile.nextInt();
+        sets[setIndex3] = sets[setIndex].union(sets[setIndex2]);
+    }
+
+    private static void removeElementFromSet() {
+        int setIndex = inputFile.nextInt();
+        int value = inputFile.nextInt();
+        if (sets[setIndex] == null) {
+            System.out.println("Set " + setIndex + " does not exist.");
+        } else {
+            System.out.println("Removing " + value + " from set " + setIndex);
+            sets[setIndex].remove(value);
+        }
+    }
+
+    private static void addElementToSet() {
+        int setIndex = inputFile.nextInt();
+        int value = inputFile.nextInt();
+        if (sets[setIndex] == null) {
+            System.out.println("Set " + setIndex + " does not exist.");
+        } else {
+            sets[setIndex].add(value);
+            System.out.println("Set " + setIndex + " had the value " + value + " added to it");
+        }
+    }
+
+    private static void emptySet() {
+        int setIndex = inputFile.nextInt();
+        if (sets[setIndex] != null) {
+            sets[setIndex].makeEmpty();
+            System.out.println("Set " + setIndex + " was emptied.");
+        } else {
+            System.out.println("Set " + setIndex + " does not exist.");
+        }
+    }
+
+    private static void constructSet() {
+        int setIndex = inputFile.nextInt();
+        sets[setIndex] = new Set();
+        System.out.println("Set " + setIndex + " has been constructed.");
+    }
+
+    public static void inspectSet()
+    {
+        int setIndex = inputFile.nextInt();
+        if (sets[setIndex] == null) {
+            System.out.println("Set " + setIndex + " does not exist.");
+        } else {
+            String output;
+            if(sets[setIndex].isEmpty())
+            {
+                output = "Set " + setIndex + " is empty";
+            }
+            else
+            {
+                output = "Set " + setIndex + " is not empty";
+            }
+            System.out.println(output);
+        }
+
+    }
+
+    public static void countSetElements()
+    {
+        int setIndex = inputFile.nextInt();
+        if (sets[setIndex] == null) {
+            System.out.println("Set " + setIndex + " does not exist.");
+        } else {
+            int size = sets[setIndex].size();
+            System.out.println("Set " + setIndex + " has a size of " + size);
+        }
+    }
+
+    public static void findElementInSet()
+    {
+        int setIndex = inputFile.nextInt();
+        String output;
+        if (sets[setIndex] != null)
+        {
+            int value = inputFile.nextInt();
+            if(sets[setIndex].elementOf(value))
             {
                 output = "Set " + setIndex + " has value " + value;
             }
