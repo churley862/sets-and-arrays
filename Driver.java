@@ -121,6 +121,7 @@ public class Driver
 
             case 'M':
                 setIndex = inputFile.nextInt();
+                sets[setIndex] = new Set();
                 while (inputFile.hasNextInt())
                 {
                     value = inputFile.nextInt();
