@@ -35,6 +35,7 @@ public class Driver
             case 'C':
                 setIndex = inputFile.nextInt();
                 sets[setIndex] = new Set();
+                System.out.println("Set " + setIndex + " has been constructed.");
                 break;
             case 'I':
                 setIndex = inputFile.nextInt();
